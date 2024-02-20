@@ -1,12 +1,14 @@
 package com.spring.mvc.SpringMvcProject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Student {
 
     private String name;
     private int empId;
     private String phone;
+    @JsonIgnore
     private String dept;
 
     public String getName() {
@@ -33,6 +35,7 @@ public class Student {
         this.phone = phone;
     }
 
+    @JsonProperty
     public String getDept() {
         return dept;
     }

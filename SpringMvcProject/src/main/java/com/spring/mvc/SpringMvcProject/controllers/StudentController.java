@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/student")
@@ -29,10 +29,40 @@ public class StudentController {
 //        return "created";
 //    }
 
-    @PostMapping("/create")
-    public String createStudent(@RequestBody List<Student> students){
-        System.out.println("Student list size " + students.size());
-        System.out.println(students);
-        return "created";
+//    @PostMapping("/create")
+//    public String createStudent(@RequestBody List<Student> students) {
+//        System.out.println("Student list size " + students.size());
+//        System.out.println(students);
+//        return "created";
+//    }
+
+//    @PostMapping("/create")
+//    public List<Student> createStudent(@RequestBody List<Student> students){
+//        System.out.println("Student list size " + students.size());
+//        System.out.println(students);
+//        return students;
+//    }
+
+//    @PostMapping("/create")
+//    public Student createStudent(@RequestBody List<Student> students){
+//        System.out.println("Student list size " + students.size());
+//        System.out.println(students);
+//        return students.get(0);
+//    }
+
+//    @PostMapping("/create")
+//    public List<String> createStudent(@RequestBody List<Student> students){
+//        List<String> foods = Arrays.asList("Pizza", "Burger");
+//        return foods;
+//    }
+
+      @PostMapping("/create")
+      public Map<String, Object> createStudent(@RequestBody List<Student> students){
+        Map<String, Object> data = new HashMap<>();
+        data.put("content", students);
+        data.put("error","No error found");
+        data.put("currentData", new Date());
+//        data.put("systemInformation", System.getProperties());
+        return data;
     }
 }
