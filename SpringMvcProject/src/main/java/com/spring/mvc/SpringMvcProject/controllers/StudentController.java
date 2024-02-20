@@ -1,6 +1,8 @@
 package com.spring.mvc.SpringMvcProject.controllers;
 
 import com.spring.mvc.SpringMvcProject.models.Student;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,13 +58,21 @@ public class StudentController {
 //        return foods;
 //    }
 
-      @PostMapping("/create")
-      public Map<String, Object> createStudent(@RequestBody List<Student> students){
-        Map<String, Object> data = new HashMap<>();
-        data.put("content", students);
-        data.put("error","No error found");
-        data.put("currentData", new Date());
-//        data.put("systemInformation", System.getProperties());
-        return data;
+//      @PostMapping("/create")
+//      public Map<String, Object> createStudent(@RequestBody List<Student> students){
+//        Map<String, Object> data = new HashMap<>();
+//        data.put("content", students);
+//        data.put("error","No error found");
+//        data.put("currentData", new Date());
+//        return data;
+//    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Student> createStudent(@RequestBody List<Student> students) {
+        Student student = students.get(0);
+//        ResponseEntity<Student> response = new ResponseEntity<>(student, HttpStatus.CREATED);
+        ResponseEntity<Student> response = ResponseEntity.status(HttpStatus.OK).body(student);
+        return response;
     }
+
 }
